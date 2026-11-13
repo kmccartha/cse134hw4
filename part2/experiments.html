@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Experimental HTML tags: template, audio, video, canvas and source.">
+<title>Experiments | Time Blocks</title>
+<link rel="stylesheet" href="styles.css">
+<script src="js/hello-world.js" defer></script>
+</head>
+<body>
+<header>
+<p><b>Time Blocks</b></p>
+<nav aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="plan.html">Plan</a></li>
+<li><a href="study.html">Study</a></li>
+<li><a href="balance.html">Balance</a></li>
+<li><a href="track.html">Track</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="experiments.html" aria-current="page">Experiments</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<h1>Experiments</h1>
+<section>
+<h2>Template</h2>
+<p>The template below is not shown. A later assignment will use JavaScript to copy it once for each time block.</p>
+<template id="block-template">
+<article>
+<h3>Block name</h3>
+<p><span>start time</span>, <span>length</span></p>
+</article>
+</template>
+</section>
+<section>
+<h2>Audio</h2>
+<p>A short chime that could play when a focus session ends.</p>
+<audio controls>
+<source src="media/chime.mp3" type="audio/mpeg">
+<source src="media/chime.ogg" type="audio/ogg">
+<p>Your browser does not support audio. <a href="media/chime.mp3">Download the chime</a>.</p>
+</audio>
+</section>
+<section>
+<h2>Video</h2>
+<p>A short animation of sample weekly hours.</p>
+<video controls width="640" height="360" poster="images/video-poster.jpg">
+<source src="media/week-demo.mp4" type="video/mp4">
+<source src="media/week-demo.webm" type="video/webm">
+<p>Your browser does not support video. <a href="media/week-demo.mp4">Download the video</a>.</p>
+</video>
+</section>
+<section>
+<h2>Canvas</h2>
+<p>A tiny bar chart of sample hours: class, work, study and rest.</p>
+<canvas id="hours-chart" width="320" height="150">
+<p>Bar chart of sample hours: class 15, work 18, study 12, rest 8.</p>
+</canvas>
+<script>
+const canvas = document.getElementById("hours-chart");
+const ctx = canvas.getContext("2d");
+const labels = ["Class", "Work", "Study", "Rest"];
+const hours = [15, 18, 12, 8];
+hours.forEach((h, i) => {
+  ctx.fillRect(20 + i * 75, 120 - h * 5, 50, h * 5);
+  ctx.fillText(labels[i], 20 + i * 75, 140);
+});
+</script>
+</section>
+</main>
+<footer>
+<p>&copy; 2026 Time Blocks<br>
+Built for CSE 134 at UC San Diego</p>
+<hello-world></hello-world>
+</footer>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Add time blocks to your week and see a sample week for a CS student with a part-time job.">
+<title>Plan | Time Blocks</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+<p><b>Time Blocks</b></p>
+<nav aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="plan.html" aria-current="page">Plan</a></li>
+<li><a href="study.html">Study</a></li>
+<li><a href="balance.html">Balance</a></li>
+<li><a href="track.html">Track</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="experiments.html">Experiments</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<h1>Plan your week</h1>
+<section>
+<h2>Add a block</h2>
+<p>Enter one commitment at a time. Start with the things that cannot move, like lectures and shifts.</p>
+<form action="plan.html" method="get">
+<fieldset>
+<legend>New time block</legend>
+<div>
+<label for="block-name">Block name</label>
+<input type="text" id="block-name" name="block-name" placeholder="CSE 134 lecture" required>
+</div>
+<fieldset>
+<legend>Type</legend>
+<input type="radio" id="type-class" name="type" value="class" checked>
+<label for="type-class">Class</label>
+<input type="radio" id="type-work" name="type" value="work">
+<label for="type-work">Work</label>
+<input type="radio" id="type-study" name="type" value="study">
+<label for="type-study">Study</label>
+<input type="radio" id="type-rest" name="type" value="rest">
+<label for="type-rest">Rest</label>
+</fieldset>
+<p><label for="day">Day</label>
+<input type="date" id="day" name="day"></p>
+<p><label for="start">Start time</label>
+<input type="time" id="start" name="start"></p>
+<p><label for="hours">Length in hours</label>
+<input type="number" id="hours" name="hours" min="0.5" max="12" step="0.5" value="1"></p>
+<p><label for="notes">Notes</label><br>
+<textarea id="notes" name="notes" rows="3" cols="40"></textarea></p>
+<button type="submit">Add block</button>
+<button type="reset">Clear form</button>
+</fieldset>
+</form>
+</section>
+<section>
+<h2>Sample week</h2>
+<p>This example shows a student with 15 hours of class and a part-time restaurant job.</p>
+<p><label for="planned">Hours planned (sample):</label>
+<progress id="planned" value="42" max="60">42 of 60 hours</progress>
+<span>42 of 60 hours</span></p>
+<article>
+<h3>Monday</h3>
+<ul>
+<li><b>9:00</b> Lecture</li>
+<li><b>13:00</b> Study block</li>
+<li><b>17:00</b> Shift</li>
+</ul>
+</article>
+<article>
+<h3>Wednesday</h3>
+<ul>
+<li><b>10:00</b> Lab</li>
+<li><b>14:00</b> Project work</li>
+<li><b>20:00</b> Rest</li>
+</ul>
+</article>
+<article>
+<h3>Saturday</h3>
+<ul>
+<li><b>11:00</b> Shift</li>
+<li><b>19:00</b> Music practice</li>
+</ul>
+</article>
+<p><strong>Warning:</strong> if planned hours pass 60, move something before adding more.</p>
+</section>
+<section>
+<h2>Planning tip</h2>
+<study-tip>Put study blocks <em>right after</em> class while the material is fresh.</study-tip>
+</section>
+</main>
+<footer>
+<p>&copy; 2026 Time Blocks<br>
+Built for CSE 134 at UC San Diego</p>
+
+</footer>
+</body>
+</html>

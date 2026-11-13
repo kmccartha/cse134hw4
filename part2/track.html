@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A short weekly review that compares your plan with what happened.">
+<title>Track | Time Blocks</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+<p><b>Time Blocks</b></p>
+<nav aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="plan.html">Plan</a></li>
+<li><a href="study.html">Study</a></li>
+<li><a href="balance.html">Balance</a></li>
+<li><a href="track.html" aria-current="page">Track</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="experiments.html">Experiments</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<h1>Track your week</h1>
+<section>
+<h2>Weekly review</h2>
+<ol>
+<li>Check off the goals you finished.</li>
+<li>Rate your energy.</li>
+<li>Write one change for next week.</li>
+</ol>
+<form action="track.html" method="get">
+<fieldset>
+<legend>This week</legend>
+<fieldset>
+<legend>Goals finished</legend>
+<input type="checkbox" id="goal-1" name="goal" value="1" checked>
+<label for="goal-1">Finish the project milestone</label><br>
+<input type="checkbox" id="goal-2" name="goal" value="2" checked>
+<label for="goal-2">Sleep seven hours on school nights</label><br>
+<input type="checkbox" id="goal-3" name="goal" value="3">
+<label for="goal-3">One music session</label>
+</fieldset>
+<fieldset>
+<legend>Energy</legend>
+<input type="radio" id="e1" name="energy" value="1">
+<label for="e1">1</label>
+<input type="radio" id="e2" name="energy" value="2">
+<label for="e2">2</label>
+<input type="radio" id="e3" name="energy" value="3" checked>
+<label for="e3">3</label>
+<input type="radio" id="e4" name="energy" value="4">
+<label for="e4">4</label>
+<input type="radio" id="e5" name="energy" value="5">
+<label for="e5">5</label>
+</fieldset>
+<p><label for="change">One change for next week</label><br>
+<textarea id="change" name="change" rows="3" cols="40"></textarea></p>
+<button type="submit">Save review</button>
+</fieldset>
+</form>
+</section>
+<section>
+<h2>Progress</h2>
+<p><label for="goals-done">Goals finished (sample):</label>
+<progress id="goals-done" value="2" max="3">2 of 3 goals</progress></p>
+<p><i>Tip:</i> a missed goal is <em>data</em>, not a failure.</p>
+</section>
+</main>
+<footer>
+<p>&copy; 2026 Time Blocks<br>
+Built for CSE 134 at UC San Diego</p>
+
+</footer>
+</body>
+</html>
