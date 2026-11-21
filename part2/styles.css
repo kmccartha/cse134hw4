@@ -1,19 +1,76 @@
 /*
  * 
  * Name: Kiame McCartha
- * Repository: https://github.com/kmccartha/CSE134-HW3
+ * Repository: https://github.com/kmccartha/cse134hw4
  */
 
+/* ==========================================================
+ * Theme tokens. Light is the default, so every page (including
+ * form-no-js.html, which has no JavaScript) is readable.
+ * theme.js adds data-theme="dark" to <html> to switch themes.
+ * ========================================================== */
 :root {
+    color-scheme: light;
+
     --color-ink: #24313b;
     --color-paper: #f5f7fa;
     --color-primary: #245b73;
+    --color-primary-strong: #173f51;
+    --color-on-primary: #ffffff;
     --color-accent: #e5a94d;
     --color-card: #ffffff;
+    --color-card-alt: #fbfcfd;
     --color-border: #d6e0e7;
+    --color-link-hover: #8a4b00;
+    --color-nav-hover-bg: #e7eef2;
+    --color-muted: #53636e;
+    --color-hint: #3d4b55;
+    --color-field-bg: #ffffff;
+    --color-control-border: #5f7380;
+    --color-invalid: #b00020;
+    --color-invalid-bg: #fff5f6;
+    --color-valid: #1b6e2d;
+    --color-note-bg: #fff8e9;
+    --color-note-text: #5c3200;
+    --color-note-border: #8a4b00;
+    --color-limit-bg: #e7eef2;
+    --shadow-card: rgb(36 49 59 / 5%);
+    --icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' fill='%23b00020'/%3E%3Cpath d='M6 6l8 8M14 6l-8 8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    --icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' fill='%231b6e2d'/%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
     --font-body: "Segoe UI", Arial, Helvetica, sans-serif;
     --content-width: 68rem;
     --space: 1.25rem;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --color-ink: #e6edf3;
+    --color-paper: #11171c;
+    --color-primary: #7fc4e0;
+    --color-primary-strong: #a8dcf0;
+    --color-on-primary: #0b1a22;
+    --color-accent: #f0b95a;
+    --color-card: #1a232b;
+    --color-card-alt: #212c35;
+    --color-border: #3a4955;
+    --color-link-hover: #ffcf8a;
+    --color-nav-hover-bg: #283641;
+    --color-muted: #aab8c3;
+    --color-hint: #c3cfd8;
+    --color-field-bg: #0f151a;
+    --color-control-border: #8ea3b2;
+    --color-invalid: #ff8a95;
+    --color-invalid-bg: #3a1a20;
+    --color-valid: #6fd18a;
+    --color-note-bg: #2c2616;
+    --color-note-text: #ffe2a8;
+    --color-note-border: #f0b95a;
+    --color-limit-bg: #1f3341;
+    --shadow-card: rgb(0 0 0 / 35%);
+    --icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' fill='%23ff8a95'/%3E%3Cpath d='M6 6l8 8M14 6l-8 8' stroke='%233a1a20' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    --icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' fill='%236fd18a'/%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%230f2a17' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 /* Base typography and page spacing */
@@ -70,12 +127,12 @@ nav a {
 /* Attribute selector: mark the navigation link for the current page. */
 nav a[aria-current="page"] {
     background: var(--color-primary);
-    color: #ffffff;
+    color: var(--color-on-primary);
 }
 
 nav a:hover {
-    background: #e7eef2;
-    color: #8a4b00;
+    background: var(--color-nav-hover-bg);
+    color: var(--color-link-hover);
 }
 
 main {
@@ -85,7 +142,7 @@ main {
     border: 2px solid var(--color-border);
     border-radius: 0.9rem;
     background: var(--color-card);
-    box-shadow: 0 0.4rem 1.4rem rgb(36 49 59 / 5%);
+    box-shadow: 0 0.4rem 1.4rem var(--shadow-card);
 }
 
 h1,
@@ -143,7 +200,7 @@ section > h2 {
     padding: 1.1rem;
     border: 1px solid var(--color-border);
     border-radius: 0.65rem;
-    background: #fbfcfd;
+    background: var(--color-card-alt);
 }
 
 .card-grid > article p {
@@ -158,7 +215,7 @@ main a {
 }
 
 a:hover {
-    color: #8a4b00;
+    color: var(--color-link-hover);
 }
 
 /* Adjacent sibling combinator: separate paragraphs from a heading consistently. */
@@ -242,9 +299,9 @@ input:not([type="checkbox"]):not([type="radio"]),
 select,
 textarea {
     padding: 0.55em 0.7em;
-    border: 1px solid #9aabb7;
+    border: 1px solid var(--color-control-border);
     border-radius: 0.35rem;
-    background: #ffffff;
+    background: var(--color-field-bg);
     color: var(--color-ink);
 }
 
@@ -265,7 +322,7 @@ input[type="reset"] {
     border: 0;
     border-radius: 0.4rem;
     background: var(--color-primary);
-    color: #ffffff;
+    color: var(--color-on-primary);
     font-weight: 600;
     cursor: pointer;
 }
@@ -274,7 +331,7 @@ button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover {
-    background: #173f51;
+    background: var(--color-primary-strong);
 }
 
 a:focus-visible,
@@ -297,7 +354,7 @@ dialog {
     padding: 1rem 1.25rem;
     border: 1px solid var(--color-border);
     border-radius: 0.6rem;
-    background: #ffffff;
+    background: var(--color-card);
     color: var(--color-ink);
 }
 
@@ -307,7 +364,8 @@ study-tip {
     padding: 0.75em 1em;
     border-left: 4px solid var(--color-accent);
     border-radius: 0.25rem;
-    background: #fff8e9;
+    background: var(--color-note-bg);
+    color: var(--color-ink);
 }
 
 study-tip::before {
@@ -318,12 +376,166 @@ study-tip::before {
 body > footer {
     padding: 1.25rem 0 2rem;
     border-top: 1px solid var(--color-border);
-    color: #53636e;
+    color: var(--color-muted);
     font-size: 0.9rem;
 }
 
 body > footer p {
     margin: 0;
+}
+
+/* Contact form layout: labels sit above their controls. */
+form {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 36rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-field .hint {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-hint);
+}
+
+/* Required controls. Border width, padding, and icon space stay the
+   same in every state, so validation feedback never shifts the layout. */
+.form-field input:required,
+.form-field textarea:required {
+    width: 100%;
+    padding: 0.55em 2.5rem 0.55em 0.7em;
+    border: 2px solid var(--color-control-border);
+    border-left-width: 6px;
+    border-radius: 0.35rem;
+    background-color: var(--color-field-bg);
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.1rem;
+}
+
+.form-field textarea:required {
+    resize: vertical;
+    background-position: right 0.75rem top 0.75rem;
+}
+
+/* Invalid after the user interacts: color + dashed edges + "x" icon.
+   Not color alone: the border style and icon also change. */
+.form-field input:user-invalid,
+.form-field textarea:user-invalid {
+    border-color: var(--color-invalid);
+    border-top-style: dashed;
+    border-bottom-style: dashed;
+    background-color: var(--color-invalid-bg);
+    background-image: var(--icon-invalid);
+}
+
+/* Valid after the user interacts: color + checkmark icon */
+.form-field input:user-valid,
+.form-field textarea:user-valid {
+    border-color: var(--color-valid);
+    background-image: var(--icon-valid);
+}
+
+/* Form focus ring: uses the primary color so it stays visible in both themes. */
+form input:focus-visible,
+form textarea:focus-visible,
+form button:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+form button[type="submit"] {
+    justify-self: start;
+}
+
+/* Enhanced form: message areas (revealed by form.js) */
+[hidden] {
+    display: none !important;
+}
+
+.message-wrap {
+    display: grid;
+    gap: 1rem;
+}
+
+.message-area {
+    padding: 0.85rem 1rem;
+    border: 2px solid var(--color-border);
+    border-left: 6px solid var(--color-primary);
+    border-radius: 0.5rem;
+    background: var(--color-card-alt);
+}
+
+.message-area h2 {
+    margin: 0 0 0.5rem;
+    padding: 0;
+    border: 0;
+    font-size: 1.1rem;
+}
+
+.message-area p {
+    margin: 0;
+}
+
+#error-area {
+    border-left-color: var(--color-invalid);
+}
+
+#error-list {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+#error-list:empty {
+    display: none;
+}
+
+#error-list li + li {
+    margin-top: 0.4rem;
+}
+
+/* Constant border width so warnings never shift the layout */
+#length-status {
+    margin-top: 0.35rem;
+    padding: 0.35rem 0.6rem;
+    border: 2px solid transparent;
+    border-radius: 0.35rem;
+}
+
+#length-status.is-warning {
+    border-color: var(--color-note-border);
+    border-style: dashed;
+    background: var(--color-note-bg);
+    color: var(--color-note-text);
+    font-weight: 700;
+}
+
+#length-status.is-limit {
+    border-color: var(--color-primary);
+    border-style: solid;
+    background: var(--color-limit-bg);
+    color: var(--color-ink);
+    font-weight: 700;
+}
+
+/* Theme switch button (created by theme.js, so it never appears without JavaScript) */
+.theme-toggle {
+    margin-top: 0.75rem;
+}
+
+/* View transitions: the browser's default cross-fade runs when the theme changes.
+   Reduced motion removes the animation; the theme still switches instantly. */
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
 }
 
 /* Narrow screens: stack cards and keep navigation and controls accessible. */
@@ -367,5 +579,9 @@ body > footer p {
     select,
     textarea {
         width: 100%;
+    }
+
+    form button[type="submit"] {
+        justify-self: stretch;
     }
 }
