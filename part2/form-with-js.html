@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enhanced Contact Form | Kiame McCartha</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme.js"></script>
+  <script src="form.js" defer></script>
+</head>
+<body>
+  <header>
+    <!-- Use the same nav as your other pages, plus this page's link -->
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="study.html">Study</a></li>
+        <li><a href="balance.html">Balance</a></li>
+        <li><a href="track.html">Track</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experiments.html">Experiments</a></li>
+        <li><a href="form-no-js.html">Contact Form</a></li>
+        <li><a href="form-with-js.html" aria-current="page">Enhanced Form</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Enhanced Contact Form</h1>
+    <p id="form-help">All fields are required. Your browser checks them when you select Send message and points out anything to fix. This form submits to a testing service that echoes back what you send, so please use sample contact information.</p>
+
+    <form action="https://httpbin.org/post" method="post" aria-describedby="form-help">
+      <input type="hidden" name="possible_bot" value="true">
+
+      <div class="form-field">
+        <label for="name">Name (required)</label>
+        <p id="name-hint" class="hint">Enter 1 to 100 characters. Apostrophes, hyphens, and non-English letters are fine.</p>
+        <input type="text" id="name" name="name" autocomplete="name"
+               required minlength="1" maxlength="100" aria-describedby="name-hint">
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email (required)</label>
+        <p id="email-hint" class="hint">Use the format name@example.com.</p>
+        <input type="email" id="email" name="email" autocomplete="email"
+               required aria-describedby="email-hint">
+      </div>
+
+      <div class="form-field">
+        <label for="comments">Comments (required)</label>
+        <p id="comments-hint" class="hint">Enter 10 to 1,000 characters so your message has enough detail to answer.</p>
+        <textarea id="comments" name="comments" rows="6"
+                  required minlength="10" maxlength="1000" aria-describedby="comments-hint"></textarea>
+      </div>
+
+      <!-- Hidden until form.js runs, so no-JavaScript visitors never see empty message areas -->
+      <div id="messages" class="message-wrap" hidden>
+        <div id="error-area" class="message-area">
+          <h2>Errors</h2>
+          <p id="error-none">No errors to fix.</p>
+          <ul id="error-list" aria-live="polite" aria-relevant="additions text"></ul>
+        </div>
+
+        <div id="info-area" class="message-area">
+          <h2>Information</h2>
+          <p id="char-count"></p>
+          <p id="length-status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <button type="submit">Send message</button>
+    </form>
+  </main>
+</body>
+</html>
